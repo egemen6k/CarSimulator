@@ -37,11 +37,11 @@ public class PlayerController : MonoBehaviour
             //transform.Translate(Vector3.forward * forwardInput * speed * Time.deltaTime);
             transform.Rotate(Vector3.up * horizontalInput * turnSpeed * Time.deltaTime);
 
-            rpm = Mathf.Round((speed % 30) * 40);
-            rpmText.text = "RPM: " + rpm;
-
             speed = Mathf.Round(_rbPlayer.velocity.magnitude * 2.237f);
             speedometerText.text = "Speed: " + speed + "mph";
+
+            rpm = Mathf.Round((speed % 30) * 40);
+            rpmText.text = "RPM: " + rpm;
         }
     }
 
