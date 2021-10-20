@@ -9,10 +9,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float turnSpeed = 40f;
     private float horizontalInput,forwardInput;
     private Rigidbody _rbPlayer;
+    [SerializeField] private GameObject _centerOfMass;
 
     private void Start()
     {
         _rbPlayer = GetComponent<Rigidbody>();
+        _rbPlayer.centerOfMass = _centerOfMass.transform.position;
     }
 
     // Update is called once per frame
