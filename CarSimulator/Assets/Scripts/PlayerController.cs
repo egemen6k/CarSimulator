@@ -1,20 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    //[SerializeField] private float speed = 20f;
+    [SerializeField] private float speed;
     [SerializeField] private float horsePower = 0;
     [SerializeField] private float turnSpeed = 40f;
     private float horizontalInput,forwardInput;
     private Rigidbody _rbPlayer;
     [SerializeField] private GameObject _centerOfMass;
+    [SerializeField] private TextMeshProUGUI speedometerText;
 
     private void Start()
     {
         _rbPlayer = GetComponent<Rigidbody>();
         _rbPlayer.centerOfMass = _centerOfMass.transform.position;
+    }
+
+    private void Update()
+    {
+        speed = Mathf.Round(_rbPlayer.velocity.magnitude * 2.237f);
+        speedometerText.text = "Speed: " + speed + "mph";
     }
 
     // Update is called once per frame
